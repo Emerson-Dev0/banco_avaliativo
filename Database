@@ -1,1 +1,26 @@
+AULA 20/07
 create database "database_Emerson".
+
+create table tb_usuario(
+id_usuario serial primary key,
+tx_nome varchar(90),
+nr_idade numeric (18,0),
+tx_emai varchar(200),
+tx_senha varchar (200),
+dt_cadastro timestamp
+);
+
+create table tb_produto(
+id_produto serial primary key,
+tx_nome varchar(90),
+dt_validade timestamp,
+tx_descricao varchar(200),
+dt_cadastroproduto timestamp
+);
+
+create table tb_pedido (
+id_pedido serial primary key,
+cd_usuario integer references tb_usuario (id_usuario),
+dt_pedido timestamp,
+vl_total numeric(10,2)
+);
