@@ -1,4 +1,5 @@
 AULA 20/07
+
 create database "database_Emerson".
 
 create table tb_usuario(
@@ -24,3 +25,127 @@ cd_usuario integer references tb_usuario (id_usuario),
 dt_pedido timestamp,
 vl_total numeric(10,2)
 );
+---------------------------------------------------------------------------------
+AULA 21/07
+
+insert into tb_usuario(tx_nome, nr_idade)
+values ('Alexandre', 26); --'2026-07-20'
+
+insert into tb_usuario (tx_nome, tx_emai, tx_senha, dt_cadastro)
+values (
+    'Administrador',
+    'testeadmin@gmail.com',
+    'ADMIN',
+    '2026-07-20'
+);
+
+insert into tb_pedido (dt_pedido, vl_total) values
+(
+   '2026-04-22',
+    2500.00
+
+);
+
+insert into tb_produto(tx_nome, dt_validade,tx_descricao, dt_cadastroproduto)values
+(
+'Coca_cola',
+'2029-06-22',
+'Bebida gasosa sabor cola.',
+'2024-05-10'
+);
+
+
+
+create table tb_produto(
+id_produto serial primary key,
+tx_nome varchar(90) not null,
+dt_validade timestamp not null,
+tx_descricao varchar(200) default 'Descrição não informada',
+dt_cadastroproduto timestamp not null
+);
+
+create table tb_pedido (
+id_pedido serial primary key,
+cd_usuario integer references tb_usuario (id_usuario),
+dt_pedido timestamp not null,
+vl_total numeric(10,2) not null
+);
+
+select * from tb_produto;
+
+create table tb_calculadora(
+id_calculo serial primary key,
+vl_valor numeric (18,0) not null,
+tx_operacao varchar(1) not null
+);
+insert into tb_calculadora(vl_valor, tx_operacao) values (
+10,
+'+'
+);
+insert into tb_calculadora(vl_valor, tx_operacao) values (
+1,
+'+'
+);
+insert into tb_calculadora(vl_valor, tx_operacao) values (
+0,
+'+'
+);
+insert into tb_calculadora(vl_valor, tx_operacao) values (
+20,
+'+'
+);
+
+insert into tb_calculadora(vl_valor, tx_operacao) values (
+15,
+'-'
+);
+insert into tb_calculadora(vl_valor, tx_operacao) values (
+12,
+'-'
+);
+insert into tb_calculadora(vl_valor, tx_operacao) values (
+11,
+'-'
+);
+insert into tb_calculadora(vl_valor, tx_operacao) values (
+9,
+'-'
+);
+
+insert into tb_calculadora(vl_valor, tx_operacao) values (
+5,
+'*'
+);
+insert into tb_calculadora(vl_valor, tx_operacao) values (
+9,
+'*'
+);
+insert into tb_calculadora(vl_valor, tx_operacao) values (
+87,
+'*'
+);
+insert into tb_calculadora(vl_valor, tx_operacao) values (
+90,
+'*'
+);
+
+insert into tb_calculadora(vl_valor, tx_operacao) values (
+4,
+'/'
+);
+insert into tb_calculadora(vl_valor, tx_operacao) values (
+6,
+'/'
+);
+insert into tb_calculadora(vl_valor, tx_operacao) values (
+9,
+'/'
+);
+insert into tb_calculadora(vl_valor, tx_operacao) values (
+2,
+'/'
+);
+
+
+select sum(vl_valor)from tb_calculadora
+where tx_operacao = '*';
