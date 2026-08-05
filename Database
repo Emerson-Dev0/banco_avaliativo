@@ -149,3 +149,55 @@ insert into tb_calculadora(vl_valor, tx_operacao) values (
 
 select sum(vl_valor)from tb_calculadora
 where tx_operacao = '*';
+
+AULA 04/08
+
+create table aluno (
+    id_aluno serial,
+    nome varchar(100) not null,
+    telefone varchar(20),
+    email varchar(100),
+
+    constraint pk_aluno
+        primary key (id_aluno)
+);
+
+create table professor (
+    id_professor serial,
+    nome varchar(100) not null,
+    telefone varchar(20),
+    email varchar(100),
+
+    constraint pk_professor
+        primary key (id_professor)
+);
+
+create table matricula (
+    id_matricula serial,
+    id_aluno int not null,
+
+    constraint pk_matricula
+        primary key (id_matricula),
+
+    constraint fk_matricula_aluno
+        foreign key (id_aluno)
+        references aluno(id_aluno)
+);
+
+create table notas (
+    id_nota serial,
+    id_matricula int not null,
+    nota decimal(4,2),
+
+    constraint pk_notas
+        primary key (id_nota),
+
+    constraint fk_notas_matricula
+        foreign key (id_matricula)
+        references matricula(id_matricula),
+
+    constraint chk_nota
+        check (nota >= 0 and nota <= 10)
+);
+
+
