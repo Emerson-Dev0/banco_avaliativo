@@ -199,8 +199,9 @@ create table notas (
     constraint chk_nota
         check (nota >= 0 and nota <= 10)
 );
+---------------------------------------------------------------------------------
 
-18/08
+AULA 18/08
 
 select * from tb_curso tc
 
@@ -250,4 +251,107 @@ inner join tb_nota
       tb_curso.id_curso = 2
      or 
       tb_curso.id_curso = 4; 
+
+---------------------------------------------------------------------------------
+
+AULA 21/08
+
+
+select tx_nome, tx_cidade
+from tb_aluno ta 
+order by ta.tx_cidade asc;
+
+
+
+select
+    tb_aluno.tx_nome,
+    tb_aluno.id_aluno,
+    tb_nota.id_nota,
+    tb_nota.vl_nota
+from tb_aluno
+inner join tb_matricula
+    on tb_aluno.id_aluno = tb_matricula.id_aluno
+inner join tb_nota
+    on tb_nota.id_matricula = tb_matricula.id_matricula
+where tb_nota.vl_nota < 5
+order by tb_nota.vl_nota asc;
+
+select 
+  tx_nome,
+  tx_cidade,
+tb_matricula id_alunos
+from tb_aluno 
+inner join tb_matricula
+     on tb_aluno.id_aluno=tb_matricula.id_aluno
+   order by tx_cidade asc;  
+
+select
+    tb_turma.id_turma,
+    tb_turma.tx_codigo,
+    tb_nota.id_nota,
+    tb_nota.vl_nota
+from tb_turma
+inner join tb_matricula
+    on tb_turma.id_turma = tb_matricula.id_turma
+left join tb_nota
+    on tb_nota.id_matricula = tb_matricula.id_matricula
+where tb_nota.vl_nota is null;
+
+select 
+   tx_nome
+   id_aluno
+from 
+  tb_aluno
+left join tb_matricula  
+     on tb_aluno.id_aluno=tb_matricula.id_aluno
+where tb_matricula.id_turma  is null;  
+
+select
+ tx_nome
+ tx_cidade
+from tb_aluno
+  where tx_cidade= 'Chapecó'
+
+select count (vl_nota) from tb_nota;
+
+  select
+    tx_cidade,
+    count(*)
+from tb_aluno
+group by tx_cidade;
+
+select
+    tb_professor.tx_nome,
+    count(tb_matricula.id_aluno)
+from tb_professor
+inner join tb_disciplina
+    on tb_professor.id_professor = tb_disciplina.id_professor
+inner join tb_curso
+    on tb_disciplina.id_curso = tb_curso.id_curso
+inner join tb_turma
+    on tb_curso.id_curso = tb_turma.id_curso
+inner join tb_matricula
+    on tb_turma.id_turma = tb_matricula.id_turma
+group by tb_professor.tx_nome;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
