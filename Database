@@ -421,7 +421,104 @@ group by tb_cliente.tx_nome
 order by valorTotal desc;
 
 
+---------------------------------------------------------------------------------
 
+AULA 10/09
+
+update tb_produto
+set
+vl_preco = 1234.56
+where
+id_produto = 1;
+
+select * from tb_produto tp 
+
+update tb_produto 
+set 
+vl_preco = (vl_preco *1.10)
+where 
+id_produto = 2;
+
+update tb_produto
+set 
+nr_estoque = nr_estoque - 5
+where id_produto = 1 ;
+
+
+delete from tb_pedido 
+where
+id_pedido = 9;
+
+delete from tb_pedido
+where 
+nr_quantidade < 3 and dt_pedido < '2024-02-01';
+
+select
+tb_produto.tx_nome,
+tb_produto.nr_estoque,
+tb_produto.fl_Ativo
+from tb_produto
+ inner join tb_categoria
+   on id_produto = cd_categoria
+ where 
+ fl_ativo = true;
+
+
+select
+    tb_categoria.tx_nome,
+    count(tb_produto.id_produto)
+from tb_categoria
+inner join tb_produto
+    on tb_categoria.id_categoria = tb_produto.cd_categoria
+group by
+    tb_categoria.tx_nome
+having
+    count(tb_produto.id_produto) > 2;
+
+---------------------------------------------------------------------------------
+
+AULA 11/09
+
+create table tb_cliente(
+   id_cliente serial primary key,
+   tx_nome varchar(255) not null,
+   tx_unidadeFederativa varchar(2) check (tx_unidadefederativa = UPPER(tx_unidadefederativa )) unique not null,
+   nr_idade  integer check (nr_idade > 0) not null
+   );
+ drop table tb_cliente;
+
+insert
+	into
+	tb_cliente
+(id_cliente,
+	tx_nome,
+	tx_unidadeFederativa,
+	nr_idade)
+values(
+1,
+'Daniel Jacinto',
+'SC',
+17
+
+),
+(
+2,
+'Daniel Jacinto Covas',
+'MG',
+87
+),
+(
+3,
+'Daniel Jacinto Neves',
+'PR',
+55
+);
+
+alter table tb_pedido
+add column cd_cliente integer references tb_cliente(id_cliente);
+
+update  tb_pedido set cd_cliente = 1
+   where id_pedido in (3,7,8)
 
 
 
