@@ -1,1 +1,384 @@
+=======================================
+Atividades mês 07
+=======================================
+AULA 20/07
+
+create database "database_Emerson".
+
+create table tb_usuario(
+id_usuario serial primary key,
+tx_nome varchar(90),
+nr_idade numeric (18,0),
+tx_emai varchar(200),
+tx_senha varchar (200),
+dt_cadastro timestamp
+);
+
+create table tb_produto(
+id_produto serial primary key,
+tx_nome varchar(90),
+dt_validade timestamp,
+tx_descricao varchar(200),
+dt_cadastroproduto timestamp
+);
+
+create table tb_pedido (
+id_pedido serial primary key,
+cd_usuario integer references tb_usuario (id_usuario),
+dt_pedido timestamp,
+vl_total numeric(10,2)
+);
+==================================================
+AULA 21/07
+
+insert into tb_usuario(tx_nome, nr_idade)
+values ('Alexandre', 26); --'2026-07-20'
+
+insert into tb_usuario (tx_nome, tx_emai, tx_senha, dt_cadastro)
+values (
+    'Administrador',
+    'testeadmin@gmail.com',
+    'ADMIN',
+    '2026-07-20'
+);
+
+insert into tb_pedido (dt_pedido, vl_total) values
+(
+   '2026-04-22',
+    2500.00
+
+);
+
+insert into tb_produto(tx_nome, dt_validade,tx_descricao, dt_cadastroproduto)values
+(
+'Coca_cola',
+'2029-06-22',
+'Bebida gasosa sabor cola.',
+'2024-05-10'
+);
+
+create table tb_produto(
+id_produto serial primary key,
+tx_nome varchar(90) not null,
+dt_validade timestamp not null,
+tx_descricao varchar(200) default 'DescriÃ§Ã£o nÃ£o informada',
+dt_cadastroproduto timestamp not null
+);
+
+create table tb_pedido (
+id_pedido serial primary key,
+cd_usuario integer references tb_usuario (id_usuario),
+dt_pedido timestamp not null,
+vl_total numeric(10,2) not null
+);
+
+select * from tb_produto;
+
+create table tb_calculadora(
+id_calculo serial primary key,
+vl_valor numeric (18,0) not null,
+tx_operacao varchar(1) not null
+);
+insert into tb_calculadora(vl_valor, tx_operacao) values (10, '+');
+insert into tb_calculadora(vl_valor, tx_operacao) values (1, '+');
+insert into tb_calculadora(vl_valor, tx_operacao) values (0, '+');
+insert into tb_calculadora(vl_valor, tx_operacao) values (20, '+');
+insert into tb_calculadora(vl_valor, tx_operacao) values (15, '-');
+insert into tb_calculadora(vl_valor, tx_operacao) values (12, '-');
+insert into tb_calculadora(vl_valor, tx_operacao) values (11, '-');
+insert into tb_calculadora(vl_valor, tx_operacao) values (9, '-');
+insert into tb_calculadora(vl_valor, tx_operacao) values (5, '*');
+insert into tb_calculadora(vl_valor, tx_operacao) values (9, '*');
+insert into tb_calculadora(vl_valor, tx_operacao) values (87, '*');
+insert into tb_calculadora(vl_valor, tx_operacao) values (90, '*');
+insert into tb_calculadora(vl_valor, tx_operacao) values (4, '/');
+insert into tb_calculadora(vl_valor, tx_operacao) values (6, '/');
+insert into tb_calculadora(vl_valor, tx_operacao) values (9, '/');
+insert into tb_calculadora(vl_valor, tx_operacao) values (2, '/');
+
+select sum(vl_valor)from tb_calculadora
+where tx_operacao = '*';
+
+===========================================================
+Atividades mês 08
+===========================================================
+
+AULA 18/08
+
+AULA 21/07
+
+insert into tb_usuario(tx_nome, nr_idade)
+values ('Alexandre', 26); --'2026-07-20'
+
+insert into tb_usuario (tx_nome, tx_emai, tx_senha, dt_cadastro)
+values (
+    'Administrador',
+    'testeadmin@gmail.com',
+    'ADMIN',
+    '2026-07-20'
+);
+
+insert into tb_pedido (dt_pedido, vl_total) values
+(
+   '2026-04-22',
+    2500.00
+
+);
+
+insert into tb_produto(tx_nome, dt_validade,tx_descricao, dt_cadastroproduto)values
+(
+'Coca_cola',
+'2029-06-22',
+'Bebida gasosa sabor cola.',
+'2024-05-10'
+);
+
+create table tb_produto(
+id_produto serial primary key,
+tx_nome varchar(90) not null,
+dt_validade timestamp not null,
+tx_descricao varchar(200) default 'DescriÃ§Ã£o nÃ£o informada',
+dt_cadastroproduto timestamp not null
+);
+
+create table tb_pedido (
+id_pedido serial primary key,
+cd_usuario integer references tb_usuario (id_usuario),
+dt_pedido timestamp not null,
+vl_total numeric(10,2) not null
+);
+
+select * from tb_produto;
+
+create table tb_calculadora(
+id_calculo serial primary key,
+vl_valor numeric (18,0) not null,
+tx_operacao varchar(1) not null
+);
+insert into tb_calculadora(vl_valor, tx_operacao) values (10, '+');
+insert into tb_calculadora(vl_valor, tx_operacao) values (1, '+');
+insert into tb_calculadora(vl_valor, tx_operacao) values (0, '+');
+insert into tb_calculadora(vl_valor, tx_operacao) values (20, '+');
+insert into tb_calculadora(vl_valor, tx_operacao) values (15, '-');
+insert into tb_calculadora(vl_valor, tx_operacao) values (12, '-');
+insert into tb_calculadora(vl_valor, tx_operacao) values (11, '-');
+insert into tb_calculadora(vl_valor, tx_operacao) values (9, '-');
+insert into tb_calculadora(vl_valor, tx_operacao) values (5, '*');
+insert into tb_calculadora(vl_valor, tx_operacao) values (9, '*');
+insert into tb_calculadora(vl_valor, tx_operacao) values (87, '*');
+insert into tb_calculadora(vl_valor, tx_operacao) values (90, '*');
+insert into tb_calculadora(vl_valor, tx_operacao) values (4, '/');
+insert into tb_calculadora(vl_valor, tx_operacao) values (6, '/');
+insert into tb_calculadora(vl_valor, tx_operacao) values (9, '/');
+insert into tb_calculadora(vl_valor, tx_operacao) values (2, '/');
+
+select sum(vl_valor)from tb_calculadora
+where tx_operacao = '*';
+=======================================================================
+
+AULA 20/08
+
+AULA 21/08
+
+select tx_nome, tx_cidade
+from tb_aluno ta 
+order by ta.tx_cidade asc;
+
+select
+    tb_aluno.tx_nome,
+    tb_aluno.id_aluno,
+    tb_nota.id_nota,
+    tb_nota.vl_nota
+from tb_aluno
+inner join tb_matricula
+    on tb_aluno.id_aluno = tb_matricula.id_aluno
+inner join tb_nota
+    on tb_nota.id_matricula = tb_matricula.id_matricula
+where tb_nota.vl_nota < 5
+order by tb_nota.vl_nota asc;
+
+select 
+  tx_nome,
+  tx_cidade,
+tb_matricula id_alunos
+from tb_aluno 
+inner join tb_matricula
+     on tb_aluno.id_aluno=tb_matricula.id_aluno
+   order by tx_cidade asc;  
+
+select
+    tb_turma.id_turma,
+    tb_turma.tx_codigo,
+    tb_nota.id_nota,
+    tb_nota.vl_nota
+from tb_turma
+inner join tb_matricula
+    on tb_turma.id_turma = tb_matricula.id_turma
+left join tb_nota
+    on tb_nota.id_matricula = tb_matricula.id_matricula
+where tb_nota.vl_nota is null;
+
+select 
+   tx_nome
+   id_aluno
+from 
+  tb_aluno
+left join tb_matricula  
+     on tb_aluno.id_aluno=tb_matricula.id_aluno
+where tb_matricula.id_turma  is null;  
+
+select
+ tx_nome
+ tx_cidade
+from tb_aluno
+  where tx_cidade= 'ChapecÃ³'
+
+select count (vl_nota) from tb_nota;
+
+select
+    tx_cidade,
+    count(*)
+from tb_aluno
+group by tx_cidade;
+
+select
+    tb_professor.tx_nome,
+    count(tb_matricula.id_aluno)
+from tb_professor
+inner join tb_disciplina
+    on tb_professor.id_professor = tb_disciplina.id_professor
+inner join tb_curso
+    on tb_disciplina.id_curso = tb_curso.id_curso
+inner join tb_turma
+    on tb_curso.id_curso = tb_turma.id_curso
+inner join tb_matricula
+    on tb_turma.id_turma = tb_matricula.id_turma
+group by tb_professor.tx_nome;
+=================================================================
+
+AULA 25/08
+
+select 
+ tb_produto.tx_nome,
+  tb_produto.vl_preco,
+  tb_produto.fl_ativo,
+  tb_produto.nr_estoque,
+  tb_produto.cd_categoria,
+   tb_produto.tx_descricao
+from  
+tb_produto
+  left join  tb_categoria
+     on
+        tb_produto.id_produto = tb_categoria.id_categoria 
+    where
+        tb_produto.fl_ativo = true 
+    and 
+        vl_preco between 500 and 1000;
+---------------------------------------------------------------------------------
+
+select
+  tb_cliente.tx_nome,
+  tb_cliente.tx_cpf,
+  tb_cliente.tx_email,
+  tb_cliente.tx_estado
+from   
+  tb_cliente
+  where upper(tx_estado) in (upper('SC'), upper('PR'))
+order by tx_nome  asc;
+---------------------------------------------------------------------------------
+select 
+  tb_cliente.tx_nome as nomeUsuario ,
+  tb_cliente.nr_idade as idadeUsario,
+  tb_cliente.tx_email as emailUsuario,
+  tb_cliente.dt_cadastro as dataCadastro
+from tb_cliente  
+  where tx_email is null
+  and nr_idade > 50;
+---------------------------------------------------------------------------------
+select
+     tb_produto.tx_nome as nomeProduto,
+     tb_produto.vl_preco  as valorProduto,
+     tb_produto.tx_descricao  as nomeProduto,
+     tb_produto.fl_ativo as nomeProduto
+  from tb_produto
+     where fl_ativo is true
+     order by vl_preco desc;
+---------------------------------------------------------------------------------
+
+select
+    tb_cliente.tx_nome as nomecliente,
+    count(tb_item_venda.nr_quantidade) as quantidadeVendida
+from tb_cliente
+inner join tb_venda
+    on tb_cliente.id_cliente = tb_venda.cd_cliente
+inner join tb_item_venda
+    on tb_item_venda.id_item_venda = tb_venda.id_venda
+group by tb_cliente.tx_nome
+order by quantidadeVendida desc;
+---------------------------------------------------------------------------------
+
+select
+  tb_produto.tx_nome as nomeProduto,
+  tb_produto.tx_descricao as descricaoProduto
+from tb_produto
+    where cd_categoria is null;
+---------------------------------------------------------------------------------
+
+select
+    tb_cliente.tx_nome as nomecliente,
+    sum(tb_item_venda.nr_quantidade * tb_produto.vl_preco) as valorTotal
+from tb_cliente
+inner join tb_venda
+    on tb_cliente.id_cliente = tb_venda.cd_cliente
+inner join tb_item_venda
+    on tb_item_venda.id_item_venda = tb_venda.id_venda
+inner join tb_produto
+    on tb_item_venda.cd_produto = tb_produto.id_produto
+group by tb_cliente.tx_nome
+order by valorTotal desc;
+=============================================================================================
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
