@@ -574,7 +574,33 @@ INSERT INTO tb_categoria (tx_nome, tx_descricao, cd_categoria_pai) VALUES
 ('Smartwatches',    'Relógios inteligentes',                1),      -- 9 → filho de Eletrônicos
 ('Tablets',         'Tablets e e-readers',                  1);      -- 10 → filho de Eletrônicos
 
+--------------------------------------------------------------------------------------------------------
+AULA 22/10
+--------------------------------------------------------------------------------------------------------
+create sequence id_mensagem
+start with 1
+increment by 1
 
+drop sequence id_mensagem
+
+create table tb_mensagem (
+
+    id_mensagem integer primary key default nextval ('id_mensagem'),
+    tx_descricao varchar (255) not null
+) 
+
+insert into tb_mensagem (tx_descricao)
+values(
+   'mensagem de teste',
+
+);
+
+
+insert into tb_mensagem (tx_descricao)
+values ('mensagem de teste');
+
+
+select * from tb_mensagem tm 
 
 
 
